@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<script>
+
+let computer;
+
+function computerPlay(){
+	computer = Math.floor(3 * Math.random());
+}
+
+function letsplay(){
+	if (player - computer > 0 && player - computer != 2 && player - computer != 0 || player - computer == -2) {
+		console.log('You win!');
+	}
+	else if (player - computer == 0){
+		console.log('Draw!');
+	}
+	else {
+		console.log('You lose!');
+	}
+}
+
+let player = prompt('Rock, paper, scissors!');
+player.toLowerCase();
+player != 'rock' || player != 'paper' || player != 'scissors' ?
+	console.log('All good.'):
+	player = prompt('Type rock, paper or scissors only, please :)');
+	
+
+	switch(player) {
+		case 'rock':
+		player = 0;
+		break;
+		case 'paper':
+		player = 1;
+		break;
+		case 'scissors':
+		player = 2;
+		break;
+		default:
+		console.log('Yikes');
+	}
+computerPlay();
+console.log('player = ' + player);
+console.log('computer = ' + computer);
+letsplay(player, computer);	
+
+</script>
+
+//0 rock
+//1 paper
+//2 scissors
+//
+
+
+</html>
