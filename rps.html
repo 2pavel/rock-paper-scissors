@@ -1,10 +1,32 @@
 <!doctype html>
 <html>
 <head>
+<link rel="stylesheet" href="rps.css">
 </head>
 <body>
-<script>
 
+<div>
+<h1>Rock, paper, scissors! First to get 3 points wins!</h1>
+<h2>Draws grant no points.</h2>
+</div>
+<div class="buttons">
+
+<button id="rock">ROCK</button>
+<button id="paper">PAPER</button>
+<button id="scissors">SCISSORS</button>
+
+</div>
+<div id="cpuchoice">
+Computer choice
+</div>
+
+<div class="results">
+<p id="score">Score</p>
+</div>
+
+<script>
+let a=0;
+let b=0;
 let computer;
 
 function computerPlay(){
@@ -26,21 +48,22 @@ function letsplay(){
 	}
 }
 
-let a=0;
-let b=0;
 var i;
 let player;
 
-for(i=0; i < 5; i++) 
+//for(i=0; i < 5; i++) 
 	
 	{
-	player = prompt('Rock, paper, scissors!');
-	player.toLowerCase();
-	player != 'rock' || player != 'paper' || player != 'scissors' ?
-		console.log('All good.'):
-		player = prompt('Type rock, paper or scissors only, please :)');
-		
+const btns = document.querySelectorAll('button');
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const prints = document.querySelector('#score');
+const results = document.querySelector('.results');
 
+btns.forEach((button) => {
+	button.addEventListener('click', (e) => {
+		player = button.id;
 		switch(player) {
 			case 'rock':
 			player = 0;
@@ -54,8 +77,7 @@ for(i=0; i < 5; i++)
 			default:
 			console.log('Yikes');
 		}
-	
-
+		
 	computerPlay();	
 	let cc;
 		switch(computer) {
@@ -71,10 +93,13 @@ for(i=0; i < 5; i++)
 			default:
 			console.log('Hit yourself in the head if this pops up in console.');
 			}
-		
-
+	
+	console.log('--------------------------------');	
+	console.log('Computer chose ' + cc + '!');
 	console.log('player = ' + player);
 	console.log('computer = ' + computer);
+	
+	document.getElementById('cpuchoice').innerHTML = 'Computer chose ' + cc + '!';
 	letsplay(player, computer);
 	let pc;
 		switch(player) {
@@ -92,13 +117,41 @@ for(i=0; i < 5; i++)
 			}
 		
 	console.log(pc + ' vs ' + cc +'!');
+	console.log('Current score: ' + a + ' : ' + b)
+	console.log('--------------------------------');
+	var currentscore = document.createElement('p');
+	currentscore.textContent = 'Current score: ' + a + ' : ' + b;
+	if (document.getElementById('score') == 'score')
+		prints.appendChild(currentscore);
+	else
+		prints.innerHTML = 'Current score: ' + a + ' : ' + b;
+	
+	if (a == 3 || b == 3) {
+		
+		var final = document.createElement('p');
+		console.log('final score: ' + a + ' : ' + b);
+		prints.innerHTML = "Final score: " + a + " : " + b;
+		if (a > b) {
+			console.log('You win the match!');
+			final.textContent = 'YOU WIN!';
+		}
+		else {
+			console.log('Computer won the match!');
+			final.textContent = 'You loose';
+		}
+		results.appendChild(final);
+		a = 0;
+		b = 0;
 	}
-console.log('final score: ' + a + ' : ' + b);
-</script>
+				
+		});
+	});	
 
-0 rock
-1 paper
-2 scissors
+	}
+		
+	
+</script>
+<!-- 0 rock 1 paper 2 scissors -->
 
 </body>
 </html>

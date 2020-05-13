@@ -1,0 +1,32 @@
+.buttons {
+	position: static;
+	left: 50%;
+	top: 50%;
+	margin: auto;
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+.results {
+	text-align: center;
+	margin: auto;
+	padding: 2rem;
+}
+
+p {
+	text-align: center;
+	margin: auto;
+}
+
+#cpuchoice {
+	margin: auto;
+	text-align: center;
+	padding: 2rem;
+}
